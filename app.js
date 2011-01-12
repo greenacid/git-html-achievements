@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-var express = require('express');
+var express = require('express'), achievements = require('./lib/achievements').achievements;
 
 var app = module.exports = express.createServer();
 
@@ -47,6 +47,47 @@ app.get('/repos', function(req, res){
     app.sendJson(res, repos);
 });
 
+app.get('/achievements', function(req, res){
+	
+	var criteria = {
+		'you exist on github': function(data) {
+			return (typeof data.user != 'undefined') 
+		},
+		'Exebitionist': function(data) {
+			return (typeof data.user.gravatar_id);
+		},
+		'I can haz has gist': function(data) {
+			return (typeof data.user.public_repo_count);
+		},
+		'more than 10': function(data) {
+			return (data.user.public_repo_count > 10);		
+		},
+	    'more than 100': function(data) {
+            return (data.user.public_repo_count > 100);
+        },
+		'u have mail': function(data) {
+			return (typeof data.user.email != null);
+		}
+	};
+
+	var ach = new achievements(criteria);
+	var data = {
+		user: user.user,
+		repos:	user
+	};
+	ach.calculate(data, function(data) {
+		console.log(data);
+	});
+    app.sendJson(res, ach.achieved);
+});
+
+app.get('/', function(req, res){
+  res.render('index', {
+    locals: {
+      title: 'Express'
+    }
+  });
+});
 
 // Only listen on $ node app.js
 
