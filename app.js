@@ -74,7 +74,7 @@ app.get('/achievements', function(req, res){
 		repos:	user
 	};
 	ach.calculate(data, function(data) {
-		console.log(data);
+		// console.log(data);
 	});
     app.sendJson(res, ach.achieved);
 });
@@ -82,7 +82,7 @@ app.get('/achievements', function(req, res){
 app.get('/', function(req, res){
   res.render('index', {
     locals: {
-      title: 'Express'
+      title: 'Github Achievements'
     }
   });
 });
