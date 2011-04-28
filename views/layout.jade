@@ -11,13 +11,18 @@ html
         nav
           ul
             li 
-              a Achievements
+              a(href='#about') About
             li
-              a About
+              a(href='#documentation') Documentation
+            li
+              a(href='#examples') Examples
     article
       section(id='about')
-        div(class='wrap')
-          h1= title
+        div(class='section-wrap')
+          h2= title
+          p This Page shows your achievements on github based on the public information avail.
       section(id='documentation')
-        div(class='wrap')!= body
+        div(class='section-wrap')
+          h2 Documentation
       section(id='examples')
+        div(class='section-wrap')!= body
