@@ -5,4 +5,13 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='/javascripts/jquery.min.js');
     script(src='/javascripts/main.js');
-  body!= body
+  body
+    header
+      div(class='inner')
+        nav
+          ul
+            li 
+              a Achievements
+            li
+              a About
+    section(id='about')!= body
