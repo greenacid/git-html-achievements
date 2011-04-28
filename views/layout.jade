@@ -14,4 +14,10 @@ html
               a Achievements
             li
               a About
-    section(id='about')!= body
+    article
+      section(id='about')
+        div(class='wrap')
+          h1= title
+      section(id='documentation')
+        div(class='wrap')!= body
+      section(id='examples')
