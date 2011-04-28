@@ -48,7 +48,7 @@ app.get('/repos', function(req, res){
     app.sendJson(res, repos);
 });
 
-app.get('/achievements', function(req, res){
+app.get('/achievements/:id', function(req, res){
 	// the achievements
 	var criteria = {
 		'you exist on github': function(data) {
